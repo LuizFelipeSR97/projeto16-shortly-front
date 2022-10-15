@@ -1,8 +1,7 @@
 import styled from "styled-components";
 import Logo from "../media/Logo.svg";
 import Trophy from "../media/Trophy.svg"
-import { Link, useNavigate} from "react-router-dom";
-import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export default function Main(){
 
@@ -27,7 +26,7 @@ export default function Main(){
             </Header>     
             <Content>
                 <Title>
-                    <img src={Trophy} alt="Trophy image"/>
+                    <img src={Trophy} alt="Trophy"/>
                     <h1>Ranking</h1>
                 </Title>
                 <Table>
@@ -126,6 +125,7 @@ const Title = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 50px;
+    cursor: default;
 
     h1 {
         font-size: 36px;
@@ -147,6 +147,7 @@ const Table = styled.div`
     width: 1010px;
     margin-top: 55px;
     padding: 10px 40px;
+    cursor: default;
 
 `
 const User = styled.div`
@@ -169,6 +170,7 @@ const AlternativeText = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 80px;
+    cursor: default;
 
     h1 {
         font-size: 36px;
