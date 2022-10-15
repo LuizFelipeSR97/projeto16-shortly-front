@@ -42,8 +42,10 @@ export default function SignIn(){
                         </Link>
                     </Rigth>
                 </MenuBar>
-                <img src={Logo} alt="Shortly logo"/>
-            </Header>      
+                <Link to="/">
+                    <img src={Logo} alt="Shortly logo"/>
+                </Link>
+            </Header>
             <Content>
                 <Form onSubmit={sendForm}>
                     <input name="email" placeholder="E-mail" type="email" required/>
@@ -66,14 +68,15 @@ const Header = styled.div`
     background-color: #FFFFFF;
     height: 200px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     position: relative;
-    padding-top: 40px;
+    padding-top: 30px;
 
-
-    img{
-        position: absolute;
-        bottom: 20px;
+    img {
+        margin-top: 30px;
+        left: 50%;
         height: 100px;
         width: auto;
     }
@@ -87,7 +90,7 @@ const MenuBar = styled.div`
     h1{
         font-size: 14px;
         font-weight: 400;
-        color: #5D9040;
+        color: #9C9C9C;
         margin-left: 28px;
     }
 
@@ -114,7 +117,7 @@ const Rigth = styled.div`
         text-decoration: none;
         font-size: 14px;
         font-weight: 400;
-        color: #9C9C9C;
+        color: #5D9040;
         margin-left: 28px;
     }
 `

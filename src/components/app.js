@@ -19,7 +19,7 @@ export default function App(){
                     <Route path="/ranking" element={<Ranking />} />
                     <Route path="/user" element={<UserPage />} />
                 </Routes>
-            </BrowserRouter>        
+            </BrowserRouter>
     </Page>
     )
 }

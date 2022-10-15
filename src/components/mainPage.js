@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import Logo from "../media/Logo.svg"
+import Logo from "../media/Logo.svg";
+import { Link, useNavigate} from "react-router-dom";
+import axios from 'axios';
 
 export default function Main(){
 
@@ -8,16 +10,18 @@ export default function Main(){
             <Header>
                 <MenuBar>
                     <Left>
-                        <h2>Seja bem-vindo(a), Pessoa!</h2>
                     </Left>
                     <Rigth>
-                        <h1>Home</h1>
-                        <h1>Ranking</h1>
-                        <h1>Sair</h1>
+                        <Link to="/signin">
+                            Entrar
+                        </Link>
+                        <Link to="/signup">
+                            Cadastrar-se
+                        </Link>
                     </Rigth>
                 </MenuBar>
                 <img src={Logo} alt="Shortly logo"/>
-            </Header>      
+            </Header>     
             <Content>
             </Content>
         </>
@@ -26,8 +30,9 @@ export default function Main(){
 
 const Content = styled.div`
 background-color: #FFFFFF;
-background-color: red;
+background-color: green;
 height: 100%;
+font-family: 'Lexend Deca', sans-serif;
 `
 const Header = styled.div`
     background-color: #FFFFFF;
@@ -62,7 +67,9 @@ const MenuBar = styled.div`
         font-size: 14px;
         font-weight: 400;
         color: #5D9040;
+        margin-left: 28px;
     }
+
 `
 const Left = styled.div`
     height: auto;
@@ -73,4 +80,13 @@ const Rigth = styled.div`
     height: 100%;
     display: flex;
     align-items: flex-end;
+    cursor: default;
+
+    a:-webkit-any-link {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        color: #5D9040;
+        margin-left: 28px;
+    }
 `

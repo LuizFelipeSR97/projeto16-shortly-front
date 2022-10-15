@@ -24,6 +24,13 @@ export default function SignUp(){
                     e.target.confirmPassword.value="";
                     return alert(err.response.data)
                 }
+                if (err.response.status===409){
+                    e.target.name.value="";
+                    e.target.email.value="";
+                    e.target.password.value="";
+                    e.target.confirmPassword.value="";
+                    return alert("Já existe um usuário cadastrado com esse email. Crie uma nova conta com outro email ou conecte-se a sua conta na aba Entrar no menu superior à direita")
+                }
                 console.error(err);
                 return alert("Erro ao fazer cadastro. Consulte os logs.")
             })
@@ -43,7 +50,9 @@ export default function SignUp(){
                         <h1>Cadastrar-se</h1>
                     </Rigth>
                 </MenuBar>
-                <img src={Logo} alt="Shortly logo"/>
+                <Link to="/">
+                    <img src={Logo} alt="Shortly logo"/>
+                </Link>
             </Header>      
             <Content>
                 <Form onSubmit={sendForm}>
@@ -52,7 +61,7 @@ export default function SignUp(){
                     <input name="password" placeholder="Senha" type="password" required/>
                     <input name="confirmPassword" placeholder="Confirmar senha" type="password" required/>
                     <Button>
-                        Entrar
+                        Criar Conta
                     </Button>
                 </Form>
             </Content>
@@ -69,14 +78,15 @@ const Header = styled.div`
     background-color: #FFFFFF;
     height: 200px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     position: relative;
-    padding-top: 40px;
+    padding-top: 30px;
 
-
-    img{
-        position: absolute;
-        bottom: 20px;
+    img {
+        margin-top: 30px;
+        left: 50%;
         height: 100px;
         width: auto;
     }
@@ -90,7 +100,7 @@ const MenuBar = styled.div`
     h1{
         font-size: 14px;
         font-weight: 400;
-        color: #5D9040;
+        color: #9C9C9C;
         margin-left: 28px;
     }
 
@@ -117,7 +127,7 @@ const Rigth = styled.div`
         text-decoration: none;
         font-size: 14px;
         font-weight: 400;
-        color: #9C9C9C;
+        color: #5D9040;
         margin-left: 28px;
     }
 `
