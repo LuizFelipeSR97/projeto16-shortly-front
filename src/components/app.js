@@ -28,4 +28,5 @@ const Page = styled.div`
     background-color: #FFFFFF;
     background-color: blue;
     height: 100vh;
+    font-family: 'Lexend Deca', sans-serif;
 `

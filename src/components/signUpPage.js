@@ -1,24 +1,60 @@
 import styled from "styled-components";
-import Logo from "../media/Logo.svg"
+import Logo from "../media/Logo.svg";
+import { Link, useNavigate} from "react-router-dom";
+import axios from 'axios';
 
 export default function SignUp(){
+
+    const navigate = useNavigate();
+
+    function sendForm(e){
+
+        e.preventDefault();
+
+        const user = {name: e.target.name.value, email: e.target.email.value, password: e.target.password.value, confirmPassword: e.target.confirmPassword.value};
+
+        axios.post("https://backend-projeto-shortly.herokuapp.com/signup", user).then(answer => {
+
+            alert('Cadastro realizado com sucesso!')        
+            navigate("/signin");
+
+            }).catch(err => {
+                if (err.response.status===422){
+                    e.target.password.value="";
+                    e.target.confirmPassword.value="";
+                    return alert(err.response.data)
+                }
+                console.error(err);
+                return alert("Erro ao fazer cadastro. Consulte os logs.")
+            })
+    }
+
 
     return (
         <>
             <Header>
                 <MenuBar>
                     <Left>
-                        <h2>Seja bem-vindo(a), Pessoa!</h2>
                     </Left>
                     <Rigth>
-                        <h1>Home</h1>
-                        <h1>Ranking</h1>
-                        <h1>Sair</h1>
+                        <Link to="/signin">
+                            Entrar
+                        </Link>
+                        <h1>Cadastrar-se</h1>
                     </Rigth>
                 </MenuBar>
                 <img src={Logo} alt="Shortly logo"/>
             </Header>      
             <Content>
+                <Form onSubmit={sendForm}>
+                    <input name="name" placeholder="Nome" type="text" required/>
+                    <input name="email" placeholder="E-mail" type="email" required/>
+                    <input name="password" placeholder="Senha" type="password" required/>
+                    <input name="confirmPassword" placeholder="Confirmar senha" type="password" required/>
+                    <Button>
+                        Entrar
+                    </Button>
+                </Form>
             </Content>
         </>
     )
@@ -26,8 +62,8 @@ export default function SignUp(){
 
 const Content = styled.div`
 background-color: #FFFFFF;
-background-color: red;
 height: 100%;
+font-family: 'Lexend Deca', sans-serif;
 `
 const Header = styled.div`
     background-color: #FFFFFF;
@@ -54,7 +90,7 @@ const MenuBar = styled.div`
     h1{
         font-size: 14px;
         font-weight: 400;
-        color: #9C9C9C;
+        color: #5D9040;
         margin-left: 28px;
     }
 
@@ -62,7 +98,9 @@ const MenuBar = styled.div`
         font-size: 14px;
         font-weight: 400;
         color: #5D9040;
+        margin-left: 28px;
     }
+
 `
 const Left = styled.div`
     height: auto;
@@ -73,4 +111,57 @@ const Rigth = styled.div`
     height: 100%;
     display: flex;
     align-items: flex-end;
+    cursor: default;
+
+    a:-webkit-any-link {
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 400;
+        color: #9C9C9C;
+        margin-left: 28px;
+    }
+`
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+
+input{
+    width: 770px;
+    height: 60px;
+    margin-bottom: 25px;
+    padding-left: 22px;
+    color: black;
+    font-size: 14px;
+    border: 1px solid rgba(120, 177, 89, 0.25);
+    box-shadow: 0px 4px 24px rgba(120, 177, 89, 0.12);
+    border-radius: 12px;
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+input::placeholder{
+    color: #9C9C9C;
+    font-size: 14px;
+    font-family: 'Lexend Deca', sans-serif;  
+}
+`
+const Button = styled.button`
+    width: 180px;
+    height: 60px;
+    margin: 10px 0;
+    background: #5D9040;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin-top: 40px;
+    border: solid 1px #5D9040;
+    border-radius: 12px;
+    cursor: pointer;
 `
