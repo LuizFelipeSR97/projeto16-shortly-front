@@ -1,9 +1,20 @@
 import styled from "styled-components";
 import Logo from "../media/Logo.svg";
 import Trophy from "../media/Trophy.svg"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {useEffect} from 'react';
 
 export default function Main(){
+
+    const navigate = useNavigate();
+    
+    useEffect(() => {
+
+        if (localStorage.token!=="" && localStorage.token!==null){
+            navigate("/ranking")
+        }
+
+    },);
 
     return (
         <>
