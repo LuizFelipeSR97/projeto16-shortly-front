@@ -6,6 +6,7 @@ import SignIn from "./signInPage";
 import SignUp from "./signUpPage";
 import Ranking from "./rankingPage";
 import UserPage from "./userPage";
+import Redirect from "./redirectPage";
 
 export default function App(){
 
@@ -18,6 +19,7 @@ export default function App(){
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/ranking" element={<Ranking />} />
                     <Route path="/user" element={<UserPage />} />
+                    <Route path="/urls/open/:shortUrl" element={<Redirect />} />
                 </Routes>
             </BrowserRouter>
     </Page>

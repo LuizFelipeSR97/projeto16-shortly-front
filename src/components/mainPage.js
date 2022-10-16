@@ -4,6 +4,8 @@ import Trophy from "../media/Trophy.svg"
 import { Link, useNavigate } from "react-router-dom";
 import {useEffect} from 'react';
 
+import RankingRender from "./renderComponents/rankingRender";
+
 export default function Main(){
 
     const navigate = useNavigate();
@@ -14,7 +16,7 @@ export default function Main(){
             navigate("/ranking")
         }
 
-    },);
+    },[navigate]);
 
     return (
         <>
@@ -41,21 +43,7 @@ export default function Main(){
                     <h1>Ranking</h1>
                 </Title>
                 <Table>
-                    <User>
-                        <h1><strong>1. Fulaninha -</strong> 32 links - 1.703.584 visualizações</h1>
-                    </User>
-                    <User>
-                        <h1><strong>2. Ciclano -</strong> 20 links - 1.113.347 visualizações</h1>
-                    </User>
-                    <User>
-                        <h1><strong>3. Beltrana -</strong> 18 links - 852.961 visualizações</h1>
-                    </User>
-                    <User>
-                        <h1><strong>4. Joaozin -</strong> 14 links - 492.173 visualizações</h1>
-                    </User>
-                    <User>
-                        <h1><strong>5. DEFINITIVAMENTE_NAO_E_UM_BOT -</strong> 12345252 links - 37.707 visualizações</h1>
-                    </User>
+                    <RankingRender />
                 </Table>
                 <AlternativeText>
                     <h1>Crie sua conta para usar nosso serviço!</h1>
@@ -84,7 +72,7 @@ const Header = styled.div`
 `
 const MenuBar = styled.div`
     height: 30px;
-    width: 800px;
+    width: 1050px;
     display: flex;
     justify-content: space-between;
 
@@ -159,20 +147,6 @@ const Table = styled.div`
     margin-top: 55px;
     padding: 10px 40px;
     cursor: default;
-
-`
-const User = styled.div`
-    display: flex;
-    margin: 15px 0;
-
-    h1 {
-        font-size: 22px;
-        font-weight: 400;
-    }
-
-    strong {
-        font-weight: 500;
-    }
 
 `
 const AlternativeText = styled.div`

@@ -93,7 +93,7 @@ const Header = styled.div`
 `
 const MenuBar = styled.div`
     height: 30px;
-    width: 800px;
+    width: 1050px;
     display: flex;
     justify-content: space-between;
 
